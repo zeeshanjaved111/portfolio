@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zeeshan Finance Hero Section</title>
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- CSS Reset & Variables --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        :root {
+            --primary-purple: #7C3AED;
+            --primary-light: #A78BFA;
+            --text-dark: #0F172A;
+            --text-muted: #64748B;
+            --bg-gradient: linear-gradient(135deg, #EFF6FF 0%, #F8FAFC 50%, #EEF2F6 100%);
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --green-positive: #10B981;
+        }
+
+        body {
+            background: #D9E4F5; 
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Main Dashboard Frame Container */
+        .mockup-container {
+            width: 100%;
+            max-width: 1280px;
+            background: #FFFFFF;
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* --- Navbar Style --- */
+        header {
+            width: 100%;
+            padding: 30px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Zeeshan Logo Kept as requested */
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: #2E1A47;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .logo i {
+            color: var(--primary-purple);
+            font-size: 26px;
+        }
+
+        nav {
+            display: flex;
+            gap: 36px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-purple);
+        }
+
+        .btn-purple {
+            background: var(--primary-purple);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            border: none;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.25);
+        }
+
+        .btn-purple:hover {
+            background: #6D28D9;
+            transform: translateY(-2px);
+        }
+
+        /* --- Hero Section Layout (Text Left, Image Right) --- */
+        .hero-container {
+            padding: 0 50px 60px 50px;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr; /* Left for Text, Right for Image */
+            align-items: center;
+            gap: 40px;
+            position: relative;
+        }
+
+        /* LEFT SIDE: Heading, Text, and Buttons */
+        .hero-left {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; 
+            text-align: left;    
+            padding-right: 20px;
+        }
+
+        .hero-left h1 {
+            font-size: 54px;
+            line-height: 1.15;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+
+        .hero-left h1 span {
+            color: var(--primary-purple);
+            display: block;
+            margin-top: 5px;
+        }
+
+        .hero-left p {
+            color: var(--text-muted);
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 36px;
+            max-width: 500px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #2E1A47;
+            padding: 14px 32px;
+            border-radius: 50px;
+            border: 1.5px solid #D8D8E5;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover {
+            background: rgba(124, 58, 237, 0.05);
+            border-color: var(--primary-purple);
+            color: var(--primary-purple);
+        }
+
+        /* Active Users Info - Left Aligned */
+        .active-users {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .user-avatars {
+            display: flex;
+        }
+
+        .user-avatars img {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 2px solid white;
+            margin-left: -10px;
+        }
+
+        .user-avatars img:first-child {
+            margin-left: 0;
+        }
+
+        .users-text {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .users-text strong {
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+
+        /* RIGHT SIDE: Image & Floating Dashboard elements */
+        .hero-right {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            height: 100%;
+            min-height: 520px;
+        }
+
+        .main-img-wrapper {
+            position: relative;
+            width: 90%;
+            max-width: 380px;
+            z-index: 1;
+        }
+
+        .main-img-wrapper img {
+            width: 100%;
+            display: block;
+            border-radius: 0 0 20px 20px;
+        }
+
+        /* Floating Finance Cards Style */
+        .floating-card {
+            position: absolute;
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 16px;
+            padding: 14px 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
+            z-index: 2;
+            width: 220px;
+        }
+
+        .card-icon {
+            background: var(--primary-purple);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        .card-info p {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-bottom: 2px;
+        }
+
+        .card-amount-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            gap: 6px;
+        }
+
+        .card-amount {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .card-badge {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--green-positive);
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        /* Positions matching original image_41157d.jpg layout */
+        .card-1 {
+            top: 35%;
+            left: -30px;
+        }
+
+        .card-2 {
+            bottom: 28%;
+            right: -30px;
+        }
+
+        .card-3 {
+            bottom: 8%;
+            left: -10px;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            header {
+                padding: 20px;
+            }
+            nav {
+                display: none; 
+            }
+            .hero-container {
+                grid-template-columns: 1fr;
+                padding: 20px;
+                gap: 50px;
+            }
+            .hero-left {
+                align-items: center;
+                text-align: center;
+                padding-right: 0;
+            }
+            .hero-left h1 {
+                font-size: 38px;
+            }
+            .hero-right {
+                justify-content: center;
+                min-height: 450px;
+            }
+            .card-1 { left: 10px; }
+            .card-2 { right: 10px; }
+            .card-3 { left: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Dashboard Shell -->
+    <div class="mockup-container">
+        
+        <!-- Header Navigation -->
+        <header>
+            <div class="logo">
+                <i class="fa-solid fa-chart-line"></i> Zeeshan
+            </div>
+            <nav>
+                <a href="#" class="active">Home</a>
+                <a href="#">About Us</a>
+                <a href="#">Pricing</a>
+                <a href="#">Features</a>
+                <a href="#">FAQ</a>
+            </nav>
+            <button class="btn-purple">Get Started</button>
+        </header>
+
+        <!-- Main Hero Section -->
+        <main class="hero-container">
+            
+            <!-- LEFT SIDE: Heading, Text, and Buttons -->
+            <section class="hero-left">
+                <h1>Easy Guide to Maintaining <span>Accounted Finance</span></h1>
+                <p>Get the right investment strategy to manage your funds and achieve long-term financial goals.</p>
+                
+                <div class="cta-buttons">
+                    <button class="btn-purple">Get Started</button>
+                    <button class="btn-outline">Watch a Demo</button>
+                </div>
+
+                <div class="active-users">
+                    <div class="user-avatars">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="User">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80" alt="User">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80" alt="User">
+                    </div>
+                    <div class="users-text">
+                        <strong>100K+</strong> Active Users
+                    </div>
+                </div>
+            </section>
+
+            <!-- RIGHT SIDE: Image & Floating Dashboard elements -->
+            <section class="hero-right">
+                <div class="main-img-wrapper">
+                    <!-- High quality professional avatar placeholder -->
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&auto=format&fit=crop&q=80" alt="Finance Expert">
+                </div>
+
+                <!-- Floating Card 1 -->
+                <div class="floating-card card-1">
+                    <div class="card-icon"><i class="fa-solid fa-arrow-down-left"></i></div>
+                    <div class="card-info">
+                        <p>Total Income</p>
+                        <div class="card-amount-flex">
+                            <span class="card-amount">$456,990</span>
+                            <span class="card-badge">+5.87%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Floating Card 2 -->
+                <div class="floating-card card-2">
+                    <div class="card-icon"><i class="fa-solid fa-arrow-down-left"></i></div>
+                    <div class="card-info">
+                        <p>Total Income</p>
+                        <div class="card-amount-flex">
+                            <span class="card-amount">$768,000</span>
+                            <span class="card-badge">+1.67%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Floating Card 3 -->
+                <div class="floating-card card-3">
+                    <div class="card-icon"><i class="fa-solid fa-arrow-down-left"></i></div>
+                    <div class="card-info">
+                        <p>Total Income</p>
+                        <div class="card-amount-flex">
+                            <span class="card-amount">$632,000</span>
+                            <span class="card-badge">+1.29%</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Interactive Vibe Parallax Effect -->
+    <script>
+        const cards = document.querySelectorAll('.floating-card');
+        
+        document.addEventListener('mousemove', (e) => {
+            const xAxis = (window.innerWidth / 2 - e.pageX) / 45;
+            const yAxis = (window.innerHeight / 2 - e.pageY) / 45;
+            
+            cards.forEach((card, index) => {
+                const depth = (index + 1) * 0.4; 
+                card.style.transform = `translate(${xAxis * depth}px, ${yAxis * depth}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
